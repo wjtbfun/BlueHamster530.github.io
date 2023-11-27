@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Version 231127_3 | dodogi</title>
+    <title>Version 231127_4 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -133,14 +133,14 @@
               // 최대 터치 이벤트 개수를 초과하면 이벤트를 막음
               event.preventDefault();
           }
-      }, { passive: false }); // 올바르게 괄호를 사용하여 옵션을 추가
+      }, { passive: false });
       
       document.addEventListener('touchend', function (event) {
           // 현재 진행 중인 터치 이벤트 배열에서 제거
           ongoingTouchEvents = ongoingTouchEvents.filter(function (touch) {
               return touch.identifier !== event.changedTouches[0].identifier;
           });
-      });
+      }, { passive: false });
       // 터치 이벤트 끝
 
     </script>
