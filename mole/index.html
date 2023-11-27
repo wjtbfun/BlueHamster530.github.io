@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Version 231127_11 | dodogi</title>
+    <title>Version 231127_12 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -118,14 +118,14 @@
 
       document.body.appendChild(script);
 
-      document.addEventListener('pointerdown', function(event) {
+      
+    // 여기서부터 터치이벤트
+
+    document.addEventListener('touchstart', function(event) {
     event.preventDefault();
     event.stopPropagation();
       // Interaction 이벤트의 기본 동작 막기
     }, { passive: false });
-
-
-    // 여기서부터 터치이벤트
 
     document.addEventListener('pointerdown', function (event) {
       // 이벤트의 기본 동작 막기
