@@ -24,6 +24,7 @@
         document.body.style.textAlign = "left";
       }
 
+<<<<<<< HEAD
       createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/rotation2.data.unityweb",
         frameworkUrl: "Build/rotation2.framework.js.unityweb",
@@ -35,6 +36,31 @@
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
+=======
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+
+      document.addEventListener('pointerdown', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+      // Interaction 이벤트의 기본 동작 막기
+    }, { passive: false });
+>>>>>>> 8e3e1024ccd2785f3cb01f874c5abc57b40d12c7
     </script>
   </body>
 </html>
