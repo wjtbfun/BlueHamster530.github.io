@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Practice</title>
+    <title>Ur | Practice</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -114,6 +114,12 @@
         });
       };
       document.body.appendChild(script);
+
+            document.addEventListener('pointerdown', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+      // Interaction 이벤트의 기본 동작 막기
+    }, { passive: false });
     </script>
   </body>
 </html>
