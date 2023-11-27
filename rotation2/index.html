@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>aasdfaa | Practice</title>
+    <title>aasdfqwsaa | Practice</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
@@ -36,6 +36,15 @@
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
 
+      unityInstance.on("pointerdown", function(event) {
+        console.log('Pointer down event:', event);
+        event.preventDefault();
+        // 여기에 필요한 처리를 추가하세요.
+        // 예를 들어, 특정 조건에서만 기본 동작을 막고 싶다면:
+        // if (someCondition) {
+        //   event.preventDefault();
+        // }
+      });
   document.addEventListener('pointerdown', function(event) {
     console.log('Pointer down event:', event);
   });
