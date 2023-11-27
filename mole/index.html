@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Version 231127_1 | dodogi</title>
+    <title>Version 231127_2 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -119,21 +119,26 @@
       document.body.appendChild(script);
 
       //여기서부터 터치이벤트
-      var maxTouchEventsPerFrame = 5; // 프레임당 최대 터치 이벤트 수
-        var touchEventsProcessedThisFrame = 0; // 현재 프레임에서 처리된 터치 이벤트 수
+      var maxSimultaneousTouches = 3; // 동시에 처리할 수 있는 최대 터치 이벤트 수
+        var ongoingTouchEvents = []; // 현재 진행 중인 터치 이벤트를 저장하는 배열
 
         document.addEventListener('touchstart', function (event) {
-            if (touchEventsProcessedThisFrame < maxTouchEventsPerFrame) {
+            if (ongoingTouchEvents.length < maxSimultaneousTouches) {
+                // 현재 진행 중인 터치 이벤트 배열에 추가
+                ongoingTouchEvents.push(event);
+
                 // 터치 이벤트 처리 로직 추가
                 console.log('터치 입력 감지됨');
-
-                // 처리된 터치 이벤트 수 증가
-                touchEventsProcessedThisFrame++;
+            } else {
+                // 최대 터치 이벤트 개수를 초과하면 이벤트를 막음
+                event.preventDefault();
             }
+        });
 
-            // 다음 프레임에서 초기화되도록 설정
-            requestAnimationFrame(function () {
-                touchEventsProcessedThisFrame = 0;
+        document.addEventListener('touchend', function (event) {
+            // 현재 진행 중인 터치 이벤트 배열에서 제거
+            ongoingTouchEvents = ongoingTouchEvents.filter(function (touch) {
+                return touch.identifier !== event.changedTouches[0].identifier;
             });
         });
       //터치 이벤트 끝
