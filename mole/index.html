@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Version 231127_4 | dodogi</title>
+    <title>Version 231127_5 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -137,12 +137,14 @@
       
       document.addEventListener('touchend', function (event) {
           // 현재 진행 중인 터치 이벤트 배열에서 제거
-          ongoingTouchEvents = ongoingTouchEvents.filter(function (touch) {
-              return touch.identifier !== event.changedTouches[0].identifier;
-          });
+          for (var i = 0; i < ongoingTouchEvents.length; i++) {
+              if (ongoingTouchEvents[i].identifier === event.changedTouches[0].identifier) {
+                  ongoingTouchEvents.splice(i, 1);
+                  break;
+              }
+          }
       }, { passive: false });
       // 터치 이벤트 끝
-
     </script>
   </body>
 </html>
