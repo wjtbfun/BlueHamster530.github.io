@@ -119,7 +119,7 @@
       document.body.appendChild(script);
 
       //여기서부터 터치이벤트
-      var maxSimultaneousTouches = 3; // 동시에 처리할 수 있는 최대 터치 이벤트 수
+      var maxSimultaneousTouches = 1; // 동시에 처리할 수 있는 최대 터치 이벤트 수
         var ongoingTouchEvents = []; // 현재 진행 중인 터치 이벤트를 저장하는 배열
 
         document.addEventListener('touchstart', function (event) {
