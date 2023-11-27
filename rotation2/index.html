@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>aasdfqㅁㄴㅇㅁㄴㅇㅁㄴwsaa | Practice</title>
+    <title>a | Practice</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
@@ -37,25 +37,27 @@
       });
 
       var lastEventTime = 0;
-  var eventCount = 0;
-var maxEventsPerSecond = 3;
+      var eventCount = 0;
+      var maxEventsPerSecond = 3;
 
-unityInstance.on("pointerdown", function(event) {
-  var currentTime = new Date().getTime();
-  if (currentTime - lastEventTime > 1000) {
-    // 1초가 지났으면 초기화하고 이벤트를 처리
-    eventCount = 1;
-    lastEventTime = currentTime;
-    console.log('Pointer down event:', event);
-  } else {
-    // 1초 이내에 이벤트가 발생한 경우
-    eventCount++;
-    if (eventCount > maxEventsPerSecond) {
-      // 최대 허용 이벤트 수를 초과하면 preventDefault를 호출하여 브라우저 기본 동작 막기
-      event.preventDefault();
-    }
-  }
-});
+      unityInstance.on("pointerdown", function(event) {
+        console.log('Pointer down event received.'); // 디버깅 메시지 추가
+        var currentTime = new Date().getTime();
+        if (currentTime - lastEventTime > 1000) {
+          // 1초가 지났으면 초기화하고 이벤트를 처리
+          eventCount = 1;
+          lastEventTime = currentTime;
+          console.log('Pointer down event:', event);
+        } else {
+          // 1초 이내에 이벤트가 발생한 경우
+          eventCount++;
+          if (eventCount > maxEventsPerSecond) {
+            // 최대 허용 이벤트 수를 초과하면 preventDefault를 호출하여 브라우저 기본 동작 막기
+            event.preventDefault();
+            console.log('Prevented default action for pointerdown event.'); // 디버깅 메시지 추가
+          }
+        }
+      });
     </script>
   </body>
 </html>
