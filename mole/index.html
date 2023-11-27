@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Version 231127_2 | dodogi</title>
+    <title>Version 231127_3 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -118,30 +118,30 @@
 
       document.body.appendChild(script);
 
-      //여기서부터 터치이벤트
-      var maxSimultaneousTouches = 1; // 동시에 처리할 수 있는 최대 터치 이벤트 수
-        var ongoingTouchEvents = []; // 현재 진행 중인 터치 이벤트를 저장하는 배열
-
-        document.addEventListener('touchstart', function (event) {
-            if (ongoingTouchEvents.length < maxSimultaneousTouches) {
-                // 현재 진행 중인 터치 이벤트 배열에 추가
-                ongoingTouchEvents.push(event);
-
-                // 터치 이벤트 처리 로직 추가
-                console.log('터치 입력 감지됨');
-            } else {
-                // 최대 터치 이벤트 개수를 초과하면 이벤트를 막음
-                event.preventDefault();
-            }
-        });
-
-        document.addEventListener('touchend', function (event) {
-            // 현재 진행 중인 터치 이벤트 배열에서 제거
-            ongoingTouchEvents = ongoingTouchEvents.filter(function (touch) {
-                return touch.identifier !== event.changedTouches[0].identifier;
-            });
-        });
-      //터치 이벤트 끝
+      // 여기서부터 터치이벤트
+      var maxSimultaneousTouches = 1;
+      var ongoingTouchEvents = [];
+      
+      document.addEventListener('touchstart', function (event) {
+          if (ongoingTouchEvents.length < maxSimultaneousTouches) {
+              // 현재 진행 중인 터치 이벤트 배열에 추가
+              ongoingTouchEvents.push(event);
+      
+              // 터치 이벤트 처리 로직 추가
+              console.log('터치 입력 감지됨');
+          } else {
+              // 최대 터치 이벤트 개수를 초과하면 이벤트를 막음
+              event.preventDefault();
+          }
+      }, { passive: false }); // 올바르게 괄호를 사용하여 옵션을 추가
+      
+      document.addEventListener('touchend', function (event) {
+          // 현재 진행 중인 터치 이벤트 배열에서 제거
+          ongoingTouchEvents = ongoingTouchEvents.filter(function (touch) {
+              return touch.identifier !== event.changedTouches[0].identifier;
+          });
+      });
+      // 터치 이벤트 끝
 
     </script>
   </body>
