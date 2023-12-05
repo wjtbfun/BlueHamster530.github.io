@@ -122,9 +122,9 @@
 
       canvas.addEventListener('pointerdown', function(event) {
 
-        event.stopPropagation();
+        event.stopImmediatePropagation();
         console.log('Pointer down event:', event);
-    }, false);
+    }, true);
 
     </script>
   </body>
