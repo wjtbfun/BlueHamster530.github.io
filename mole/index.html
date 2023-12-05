@@ -7,6 +7,7 @@
     <title>Version 231127_20 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style></style>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -118,9 +119,12 @@
 
       document.body.appendChild(script);
 
+
       document.addEventListener('pointerdown', function(event) {
+
+        event.stopPropagation();
         console.log('Pointer down event:', event);
-    }, { passive: false });
+    }, true);
 
     </script>
   </body>
