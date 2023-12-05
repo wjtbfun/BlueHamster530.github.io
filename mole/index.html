@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Version 231127_21 | dodogi</title>
+    <title>Version 231127_22 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style></style>
@@ -120,11 +120,11 @@
       document.body.appendChild(script);
 
 
-      document.addEventListener('pointerdown', function(event) {
+      canvas.addEventListener('pointerdown', function(event) {
 
         event.stopPropagation();
         console.log('Pointer down event:', event);
-    }, true);
+    }, false);
 
     </script>
   </body>
