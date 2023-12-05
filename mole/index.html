@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Version 231127_10 | dodogi</title>
+    <title>Version 231127_20 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -119,44 +119,9 @@
       document.body.appendChild(script);
 
       document.addEventListener('pointerdown', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-      // Interaction 이벤트의 기본 동작 막기
+        console.log('Pointer down event:', event);
     }, { passive: false });
 
-      /*
-      // 여기서부터 터치이벤트
-      var maxSimultaneousTouches = 1;
-          var ongoingTouchIds = [];
-  
-          document.addEventListener('touchstart', function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-          }, {passive:false});
-
-            /*
-              if (ongoingTouchIds.length < maxSimultaneousTouches) {
-                  // 현재 진행 중인 터치 식별자 배열에 추가
-                  ongoingTouchIds.push(event.touches[0].identifier);
-  
-                  // 터치 이벤트 처리 로직 추가
-                  console.log('터치 입력 감지됨');
-              } else {
-                  // 최대 터치 이벤트 개수를 초과하면 이벤트를 막음
-                  event.preventDefault();
-                  event.stopPropagation();
-              }
-          }, { passive: false });
-  
-          document.addEventListener('touchend', function (event) {
-              // 현재 진행 중인 터치 식별자 배열에서 제거
-              var identifier = event.changedTouches[0].identifier;
-              ongoingTouchIds = ongoingTouchIds.filter(function (id) {
-                  return id !== identifier;
-              });
-          }, { passive: false });
-          */
-      // 터치 이벤트 끝
     </script>
   </body>
 </html>
