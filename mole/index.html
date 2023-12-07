@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Version 231127_29 | dodogi</title>
+    <title>Version 231127_30 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style></style>
@@ -88,9 +88,12 @@
         container.className = "unity-mobile";
         canvas.className = "unity-mobile";
 
+        canvas.style.width = "1200px";
+        canvas.style.height = "1749px";
+
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
+        config.devicePixelRatio = 1;
 
 
       } else {
