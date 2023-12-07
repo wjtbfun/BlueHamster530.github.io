@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Version 231127_27 | dodogi</title>
+    <title>Version 231127_28 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style></style>
@@ -138,6 +138,19 @@
       }
 
       console.log('useragent = ' + navigator.userAgent);
+
+      var md = new MobileDetect(navigator.userAgent);
+
+        console.log(md.mobile());          // 'Sony'
+        console.log(md.phone());           // 'Sony'
+        console.log(md.tablet());          // null
+        console.log(md.userAgent());       // 'Safari'
+        console.log(md.os());              // 'AndroidOS'
+        console.log(md.is('iPhone'));      // false
+        console.log(md.is('bot'));         // false
+        console.log(md.version('Webkit'));         // 534.3
+        console.log(md.versionStr('Build'));       // '4.1.A.0.562'
+        console.log(md.match('playstation|xbox')); // false
 
     </script>
   </body>
