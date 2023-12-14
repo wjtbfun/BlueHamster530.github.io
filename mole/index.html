@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Version 231127_36 | dodogi</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1">
+    <title>Version 231127_38 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style></style>
@@ -124,10 +124,31 @@
 
       canvas.addEventListener('pointerdown', function(event) {
 
+
         event.stopImmediatePropagation();
         console.log('Pointer down event:', event);
         console.log(event.composedPath());
+        //event.cancelBubble = true;
     }, false);
+
+    function debounce(func, delay) {
+        let timer;
+        return function () {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            func.apply(this, arguments);
+          }, delay);
+        };
+      }
+
+      var debouncedPointerDown = debounce(function (event) {
+          // 디바운스된 이벤트 핸들러 내용
+          event.stopImmediatePropagation();
+          console.log('Pointer down event:', event);
+          console.log(event.composedPath());
+        }, 500); // 디바운싱 딜레이: 500ms
+
+        canvas.addEventListener('pointerdown', debouncedPointerDown, false);
 
     function isMobile() {
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Linux/i.test(navigator.userAgent);
@@ -141,6 +162,28 @@
       }
 
       console.log('useragent = ' + navigator.userAgent);
+
+      function onTouch(evt) {
+
+          // If debounceTimeout exists, clear it.
+          if (debounceTimeout) {
+            clearTimeout(debounceTimeout);
+          }
+
+          // Set a new debounceTimeout
+          debounceTimeout = setTimeout(function () {
+            // Clear the timeout and reset the flag.
+            debounceTimeout = null;
+            scheduledAnimationFrame = false;
+
+            // Execute the actual scroll handling code.
+            requestAnimationFrame(readAndUpdatePage);
+          }, 200); // Adjust the debounce time (in milliseconds) as needed.
+
+          console.log('아 정말 미치겠군')
+        }
+
+        window.addEventListener('pointerdown', onTouch);
 
     </script>
   </body>
