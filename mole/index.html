@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1, maximum-scale=1">
-    <title>Version 231127_39 | dodogi</title>
+    <title>Version 231127_40 | dodogi</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style></style>
@@ -163,27 +163,17 @@
 
       console.log('useragent = ' + navigator.userAgent);
 
-      function onTouch(evt) {
+      document.addEventListener('touchend', (ev) => {
+          console.log("닥큐텃");
+          ev.preventDefault();
+        });
 
-          // If debounceTimeout exists, clear it.
-          if (debounceTimeout) {
-            clearTimeout(debounceTimeout);
-          }
+        canvas.addEventListener('touchend', (ev2) => {
+            console.log("캔벗텃");
+            ev2.preventDefault();
+          });
 
-          // Set a new debounceTimeout
-          debounceTimeout = setTimeout(function () {
-            // Clear the timeout and reset the flag.
-            debounceTimeout = null;
-            scheduledAnimationFrame = false;
-
-            // Execute the actual scroll handling code.
-            requestAnimationFrame(readAndUpdatePage);
-          }, 200); // Adjust the debounce time (in milliseconds) as needed.
-
-          console.log('아 정말 미치겠군')
-        }
-
-        canvas.addEventListener('pointerdown', onTouch);
+        
 
     </script>
   </body>
